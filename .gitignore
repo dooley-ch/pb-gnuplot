@@ -12,3 +12,4 @@ project.cfg
 *.exe
 *.app
 *.out
+.DS_Store
