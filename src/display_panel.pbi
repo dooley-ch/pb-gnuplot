@@ -27,10 +27,27 @@ EndDeclareModule
 
 Module DisplayPanelModule
   EnableExplicit
-
+  
+  UseJPEGImageDecoder()
+  
   Define lastError$ = ""
   
-  Define hMainWindow.i, hContainer.i
+  Define.i hMainWindow, hContainer, hImageViewer, hCurrentImage
+  
+  Procedure OnResizePanel()    
+    Shared hContainer, hImageViewer, hCurrentImage
+    Protected.i innerWidth, innerHeight, imageX, imageY, imgHeight, imgWidth
+    
+    imgHeight = ImageHeight(hCurrentImage)
+    imgWidth = ImageWidth(hCurrentImage)
+    
+    innerWidth = GadgetWidth(hContainer, #PB_Gadget_ActualSize)
+    innerHeight = GadgetHeight(hContainer, #PB_Gadget_ActualSize)
+    imageX = (innerWidth - imgWidth) / 2 
+    imageY = (innerHeight - imgHeight) / 2  
+
+    ResizeGadget(hImageViewer, imageX, imageY, imgWidth, imgHeight)     
+  EndProcedure
   
   ;┌───────────────────────────────────────────────────────────────────────────────────────────────
   ;│     Public     
@@ -44,17 +61,20 @@ Module DisplayPanelModule
   
   ; Creates the Display Panel
   Procedure.b CreateDisplayPanel(hWindow.i)
-    Shared hMainWindow, hContainer, lastError$
+    Shared hMainWindow, hContainer, hImageViewer, hCurrentImage, lastError$
     
     lastError$ = ""
     
     If IsWindow(hWindow)
       hMainWindow = hWindow
       
-      hContainer = ContainerGadget(#PB_Any, 0, 0, 100, 200, #PB_Container_Double)
+      hCurrentImage = CatchImage(#PB_Any, ?SplashImage)
+      
+      hContainer = ContainerGadget(#PB_Any, 0, 0, 100, 200, #PB_Container_BorderLess)
+        hImageViewer = ImageGadget(#PB_Any, 10, 10, 200, 200, ImageID(hCurrentImage))
       CloseGadgetList()
       
-      ;SetGadgetColor(hContainer, #PB_Gadget_BackColor, RGB($FF, $99, $66))
+      BindGadgetEvent(hContainer, @OnResizePanel(), #PB_EventType_Resize)
     EndIf
     
     lastError$ = "Invalid window handle passed to CreateNavigationPanel function"
@@ -102,11 +122,15 @@ Module DisplayPanelModule
     Debug "Display the Vertical Bar Chart"
   EndProcedure
   
+  DataSection
+    SplashImage:
+    IncludeBinary #PB_Compiler_FilePath + "res/splash.jpg"
+  EndDataSection    
 EndModule
 ; IDE Options = PureBasic 6.21 - C Backend (MacOS X - arm64)
 ; ExecutableFormat = Console
 ; CursorPosition = 73
-; FirstLine = 56
+; FirstLine = 67
 ; Folding = ---
 ; EnableXP
 ; DPIAware
