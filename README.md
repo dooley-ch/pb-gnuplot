@@ -17,4 +17,8 @@ for use in [PureBasic](https://www.purebasic.com/) desktop applications.
 
 ## Process
 
+## Reference Material
 
+[GNUplot Cookbook](https://www.amazon.com/gnuplot-Cookbook-Lee-Phillips/dp/184951724X)
+
+[Gnuplot in Action: Understanding Data with Graphs](https://www.amazon.com/Gnuplot-Action-Understanding-Data-Graphs/dp/1633430189)
