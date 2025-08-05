@@ -17,6 +17,9 @@ XIncludeFile "statusbar.pbi"
 XIncludeFile "menu.pbi"
 XIncludeFile "navigation_panel.pbi"
 XIncludeFile "display_panel.pbi"
+XIncludeFile "about_dlg.pbi"
+XIncludeFile "file_utils.pbi"
+XIncludeFile "setup.pbi"
 
 UseModule AppConstants
 UseModule ToolbarModule
@@ -24,8 +27,11 @@ UseModule StatusBarModule
 UseModule MenuModule
 UseModule NavigationPanelModule
 UseModule DisplayPanelModule
+UseModule AboutDlgModule
+UseModule SetupModule
 
 Define hMainWindow.i
+Define mainWinInfo.WindowInfo
 
 ;-------- Support Routines --------
 
@@ -44,7 +50,7 @@ Procedure.b ConfirmActionMessage(hWindow.i, message$)
 EndProcedure
 
 Procedure OnResizeMainWindow()
-  #Navitation_Panel_Width = 200
+  #Navitation_Panel_Width = 150
   Shared hMainWindow
   Protected.i innerHeight, innerWidth, displayPanel_X, displayPanelWidth, panelHeight
   
@@ -65,7 +71,9 @@ EndProcedure
 ;└───────────────────────────────────────────────────────────────────────────────────────────────
 #MainWindowFlags = #PB_Window_SystemMenu | #PB_Window_MinimizeGadget | #PB_Window_MaximizeGadget | #PB_Window_SizeGadget | #PB_Window_TitleBar
 
-hMainWindow = OpenWindow(#PB_Any, 50, 50, #MainWindow_Min_Width, #MainWindow_Min_Height, #APP_Title + " (" + #APP_Version_Number + ")", #MainWindowFlags)
+GetMainWindowInfo(@mainWinInfo)
+
+hMainWindow = OpenWindow(#PB_Any, mainWinInfo\X, mainWinInfo\Y, mainWinInfo\Width, mainWinInfo\Height, #APP_Title + " (" + #APP_Version_Number + ")", #MainWindowFlags)
 If IsWindow(hMainWindow)
   WindowBounds(hMainWindow, #MainWindow_Min_Width, #MainWindow_Min_Height, #PB_Ignore, #PB_Ignore)
   
@@ -78,14 +86,40 @@ If IsWindow(hMainWindow)
   CreateAppMenu(hMainWindow)
   
   ; Enter the message procession loop
-  Define event.i, shouldExit.b = #False
+  Define event.i, shouldExit.b = #False, shouldProcessLoop.b = #True
   
   Repeat
     event = WaitWindowEvent()
     
+    If event = #APP_Event_StopMainLoop
+      shouldProcessLoop = #False
+    EndIf
+    
+    If event = #App_Event_StartMainLoop          
+      shouldProcessLoop = #True
+    EndIf
+    
+    If Not shouldProcessLoop
+      Continue
+    EndIf
+        
     Select event
+      Case #APP_Event_CreateAreaChart
+        CreateAreaChart()
+      Case #APP_Event_Create3DBarChart
+        Create3DBarChart()
+      Case #APP_Event_CreateDoughnutChart
+        CreateDoughnutChart()
+      Case #APP_Event_CreateHorizontalBarChart
+        CreateHorizontalBarChart()
+      Case #APP_Event_CreateLineChart
+        CreateLineChart()
+      Case #APP_Event_CreatePieChart
+        CreatePieChart()
+      Case #APP_Event_CreateVerticalBarChart
+        CreateVerticalBarChart()
       Case #APP_Event_About
-        Debug "Display About Dialog"
+        ShowAboutDialog(hMainWindow)
       Case #PB_Event_SizeWindow
         OnResizeMainWindow()
       Case #PB_Event_CloseWindow, #APP_Event_Quit
@@ -93,6 +127,16 @@ If IsWindow(hMainWindow)
     EndSelect
     
   Until shouldExit
+  
+  With mainWinInfo
+    \x = WindowX(hMainWindow, #PB_Window_FrameCoordinate)
+    \y = WindowY(hMainWindow, #PB_Window_FrameCoordinate)
+    \width = WindowWidth(hMainWindow, #PB_Window_InnerCoordinate)
+    \height = WindowHeight(hMainWindow, #PB_Window_InnerCoordinate)
+  EndWith
+  
+  SetMainWindowInfo(@mainWinInfo)
+  CloseWindow(hMainWindow)
 EndIf
 
 ;┌───────────────────────────────────────────────────────────────────────────────────────────────
@@ -102,8 +146,8 @@ EndIf
 End 0
 ; IDE Options = PureBasic 6.21 - C Backend (MacOS X - arm64)
 ; ExecutableFormat = Console
-; CursorPosition = 45
-; FirstLine = 23
+; CursorPosition = 87
+; FirstLine = 64
 ; Folding = -
 ; EnableXP
 ; DPIAware

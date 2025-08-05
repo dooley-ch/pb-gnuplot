@@ -19,11 +19,89 @@ EndDeclareModule
 
 Module NavigationPanelModule
   EnableExplicit
-
+  
+  UseModule AppConstants
+  
+  #Button_Height = 35
+  
   Define lastError$ = ""
   
   Define hMainWindow.i, hContainer.i
-
+  Define hAreaChartButton.i, hBarChart3DButton.i, hDoughnutChartButton.i, hHorizontalBarChartButton.i
+  Define hLineChartButton.i, hPieChartButton.i, hVerticalBarChartButton.i
+  
+  Procedure OnResizePanel()    
+    Shared hContainer, hAreaChartButton, hBarChart3DButton, hDoughnutChartButton, hHorizontalBarChartButton
+    Shared hLineChartButton, hPieChartButton, hVerticalBarChartButton
+    Protected.i innerWidth, buttonX, buttonY
+    
+    innerWidth = GadgetWidth(hContainer, #PB_Gadget_ActualSize)
+    buttonX = 0
+    buttonY = 0
+    
+    ResizeGadget(hAreaChartButton, buttonX, buttonY, innerWidth, #Button_Height)
+    
+    buttonY = buttonY + #Button_Height + #CONTROL_OFFSET
+    ResizeGadget(hBarChart3DButton, buttonX, buttonY, innerWidth, #Button_Height)
+    
+    buttonY = buttonY + #Button_Height + #CONTROL_OFFSET
+    ResizeGadget(hDoughnutChartButton, buttonX, buttonY, innerWidth, #Button_Height)    
+    
+    buttonY = buttonY + #Button_Height + #CONTROL_OFFSET
+    ResizeGadget(hHorizontalBarChartButton, buttonX, buttonY, innerWidth, #Button_Height)    
+    
+    buttonY = buttonY + #Button_Height + #CONTROL_OFFSET
+    ResizeGadget(hLineChartButton, buttonX, buttonY, innerWidth, #Button_Height)
+    
+    buttonY = buttonY + #Button_Height + #CONTROL_OFFSET
+    ResizeGadget(hPieChartButton, buttonX, buttonY, innerWidth, #Button_Height)   
+    
+    buttonY = buttonY + #Button_Height + #CONTROL_OFFSET
+    ResizeGadget(hVerticalBarChartButton, buttonX, buttonY, innerWidth, #Button_Height)     
+  EndProcedure
+  
+  Procedure OnButtonClick_CreateAreaChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_CreateAreaChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure
+  
+  Procedure OnButtonClick_Create3DBarChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_Create3DBarChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure
+  
+  Procedure OnButtonClick_CreateDoughnutChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_CreateDoughnutChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure
+  
+  Procedure OnButtonClick_CreateHorizontalBarChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_CreateHorizontalBarChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure
+  
+  Procedure OnButtonClick_CreateLineChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_CreateLineChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure
+  
+  Procedure OnButtonClick_CreatePieChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_CreatePieChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure
+  
+  Procedure OnButtonClick_CreateVerticalBarChart()
+    Shared hMainWindow
+    
+    PostEvent(#APP_Event_CreateVerticalBarChart, hMainWindow, #PB_Ignore, #PB_Ignore)
+  EndProcedure    
+    
   ;┌───────────────────────────────────────────────────────────────────────────────────────────────
   ;│     Public     
   ;└───────────────────────────────────────────────────────────────────────────────────────────────
@@ -37,16 +115,34 @@ Module NavigationPanelModule
   ; Creates the Navigation Panel
   Procedure.b CreateNavigationPanel(hWindow.i)
     Shared hMainWindow, hContainer, lastError$
+    Shared hAreaChartButton, hBarChart3DButton, hDoughnutChartButton, hHorizontalBarChartButton
+    Shared hLineChartButton, hPieChartButton, hVerticalBarChartButton
+    Protected.i hButtomImage, hButton
     
     lastError$ = ""
     
     If IsWindow(hWindow)
       hMainWindow = hWindow
       
-      hContainer = ContainerGadget(#PB_Any, 50, 50, 100, 200, #PB_Container_Double)
+      hContainer = ContainerGadget(#PB_Any, 50, 50, 100, 200)
+        hAreaChartButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "Area Chart")
+        hBarChart3DButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "3D Bar Chart")
+        hDoughnutChartButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "Doughnut Chart")
+        hHorizontalBarChartButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "Horizontal Bar Chart")
+        hLineChartButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "Line Chart")
+        hPieChartButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "Pie Chart")
+        hVerticalBarChartButton = ButtonGadget(#PB_Any, 0, 0, 100, #Button_Height, "Vertical Bar Chart")
       CloseGadgetList()
       
-      ;SetGadgetColor(hContainer, #PB_Gadget_BackColor, RGB($00, $66, $FF))
+      BindGadgetEvent(hAreaChartButton, @OnButtonClick_CreateAreaChart(), #PB_All)
+      BindGadgetEvent(hBarChart3DButton, @OnButtonClick_Create3DBarChart(), #PB_All)
+      BindGadgetEvent(hDoughnutChartButton, @OnButtonClick_CreateDoughnutChart(), #PB_All)
+      BindGadgetEvent(hHorizontalBarChartButton, @OnButtonClick_CreateHorizontalBarChart(), #PB_All)
+      BindGadgetEvent(hLineChartButton, @OnButtonClick_CreateLineChart(), #PB_All)
+      BindGadgetEvent(hPieChartButton, @OnButtonClick_CreatePieChart(), #PB_All)
+      BindGadgetEvent(hVerticalBarChartButton, @OnButtonClick_CreateVerticalBarChart(), #PB_All)
+      
+      BindGadgetEvent(hContainer, @OnResizePanel(), #PB_EventType_Resize)  
     EndIf
     
     lastError$ = "Invalid window handle passed to CreateNavigationPanel function"
@@ -61,8 +157,8 @@ Module NavigationPanelModule
 EndModule
 ; IDE Options = PureBasic 6.21 - C Backend (MacOS X - arm64)
 ; ExecutableFormat = Console
-; CursorPosition = 48
-; FirstLine = 17
-; Folding = -
+; CursorPosition = 133
+; FirstLine = 107
+; Folding = ---
 ; EnableXP
 ; DPIAware

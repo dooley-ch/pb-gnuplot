@@ -7,40 +7,52 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2025-08-05 14:53" user="jdooley" host="Jamess-iMac.local"/>
+    <lastopen date="2025-08-05 22:23" user="jdooley" host="Jamess-iMac.local"/>
   </section>
   <section name="files">
-    <file name="win-main.pb">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="1" panelstate=""/>
-      <fingerprint md5="7acfa1a6878893852af942f176b321e5"/>
-    </file>
-    <file name="app_constants.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="76d7b0cefc2b072f23b0886254659ba4"/>
+    <file name="navigation_panel.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="999" panelstate=""/>
+      <fingerprint md5="cb3e4b6e76b4eb3e45648afba7534798"/>
     </file>
     <file name="toolbar.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="999" panelstate=""/>
       <fingerprint md5="3c241feb4eb62a556f74d2f921891667"/>
     </file>
-    <file name="statusbar.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="ff146d885317c97e894c951656b2a8be"/>
+    <file name="win-main.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="1" panelstate=""/>
+      <fingerprint md5="475b689b71a3dadfa4f051feb2ec9137"/>
     </file>
-    <file name="menu.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="5c5330f268a1761d93a3ed1a2101301d"/>
+    <file name="about_dlg.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="999" panelstate=""/>
+      <fingerprint md5="221ee74889c941dd88917b31dda01761"/>
     </file>
-    <file name="navigation_panel.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="e503af08d0813b6fb0450bdc4d5e58b1"/>
+    <file name="app_constants.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="3" panelstate=""/>
+      <fingerprint md5="31c70fe0e34024196c5c5102459981e9"/>
     </file>
     <file name="display_panel.pbi">
-      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="3a6af4fc7d230c21e8a4280233216fd3"/>
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="999" panelstate=""/>
+      <fingerprint md5="bb81ce03a63a8b5ee0f84bc7893d47a9"/>
+    </file>
+    <file name="statusbar.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="999" panelstate=""/>
+      <fingerprint md5="e185a6947693cb2ce437ddc161df7309"/>
+    </file>
+    <file name="menu.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="999" panelstate=""/>
+      <fingerprint md5="5c5330f268a1761d93a3ed1a2101301d"/>
+    </file>
+    <file name="setup.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="2" panelstate=""/>
+      <fingerprint md5="df0100144a31b1a08902362ed18f8013"/>
+    </file>
+    <file name="file_utils.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="4" panelstate=""/>
+      <fingerprint md5="e2a305a2bbf79b916dab24adddf529eb"/>
     </file>
   </section>
   <section name="targets">
-    <target name="Default Target" enabled="0" default="1">
+    <target name="Default Target" enabled="1" default="1">
       <inputfile value="win-main.pb"/>
       <outputfile value="../bin/pbplot.app"/>
       <executable value="../bin/pbplot.app"/>
