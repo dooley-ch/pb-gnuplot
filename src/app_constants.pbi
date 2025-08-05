@@ -10,6 +10,8 @@
 ;╚═════════════════════════════════════════════════════════════════════════════════════════════════
 DeclareModule AppConstants
   
+  #CONTROL_OFFSET = 5
+  
   #APP_Version_Number="1.0.1"
   #APP_Title="PureBasic -> GNU Plot Example"
   
@@ -27,7 +29,7 @@ Module AppConstants
 EndModule
 ; IDE Options = PureBasic 6.21 - C Backend (MacOS X - arm64)
 ; ExecutableFormat = Console
-; CursorPosition = 26
+; CursorPosition = 12
 ; Folding = -
 ; EnableXP
 ; DPIAware

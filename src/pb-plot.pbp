@@ -7,12 +7,12 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2025-08-05 14:18" user="jdooley" host="Jamess-iMac.local"/>
+    <lastopen date="2025-08-05 14:53" user="jdooley" host="Jamess-iMac.local"/>
   </section>
   <section name="files">
     <file name="win-main.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="1" panelstate=""/>
-      <fingerprint md5="4772967543d62b39415340098a1a39c5"/>
+      <fingerprint md5="7acfa1a6878893852af942f176b321e5"/>
     </file>
     <file name="app_constants.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
@@ -24,11 +24,19 @@
     </file>
     <file name="statusbar.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="ab818049563fd2b484c53806afb69cf2"/>
+      <fingerprint md5="ff146d885317c97e894c951656b2a8be"/>
     </file>
     <file name="menu.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
-      <fingerprint md5="804a6449e20b0541b58be763a227947b"/>
+      <fingerprint md5="5c5330f268a1761d93a3ed1a2101301d"/>
+    </file>
+    <file name="navigation_panel.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
+      <fingerprint md5="e503af08d0813b6fb0450bdc4d5e58b1"/>
+    </file>
+    <file name="display_panel.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
+      <fingerprint md5="3a6af4fc7d230c21e8a4280233216fd3"/>
     </file>
   </section>
   <section name="targets">
