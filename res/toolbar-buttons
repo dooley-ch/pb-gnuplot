@@ -2,7 +2,7 @@
 <AxialisIconCollection>
   <Name>toolbar-buttons</Name>
   <Icon>
-    <Name>exit</Name>
+    <Name>exit-button</Name>
     <HasBackground>0</HasBackground>
     <StockIconName>exit.axvi</StockIconName>
     <StockIconFamily>Axialis Flat Design</StockIconFamily>
@@ -13,11 +13,11 @@
     <OverlayOffset>1</OverlayOffset>
     <Opacity>255</Opacity>
     <ColorizeMode>1</ColorizeMode>
-    <StockOverlayPos>4</StockOverlayPos>
+    <StockOverlayPos>-2113634303</StockOverlayPos>
     <DarkMode>0</DarkMode>
   </Icon>
   <Icon>
-    <Name>button-info</Name>
+    <Name>about-button</Name>
     <HasBackground>0</HasBackground>
     <StockIconName>button-info.axvi</StockIconName>
     <StockIconFamily>Axialis Flat Design</StockIconFamily>
