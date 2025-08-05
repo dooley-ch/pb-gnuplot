@@ -14,10 +14,12 @@ EnableExplicit
 XIncludeFile "app_constants.pbi"
 XIncludeFile "toolbar.pbi"
 XIncludeFile "statusbar.pbi"
+XIncludeFile "menu.pbi"
 
 UseModule AppConstants
 UseModule ToolbarModule
 UseModule StatusBarModule
+UseModule MenuModule
 
 ;-------- Support Routines --------
 
@@ -49,6 +51,7 @@ If IsWindow(hMainWindow)
   ; Create the window gadgets
   CreateAppToolBar(hMainWindow)
   CreateAppStatusBar(hMainWindow)
+  CreateAppMenu(hMainWindow)
   
   ; Enter the message procession loop
   Define event.i, shouldExit.b = #False
@@ -74,8 +77,8 @@ End 0
 
 ; IDE Options = PureBasic 6.21 - C Backend (MacOS X - arm64)
 ; ExecutableFormat = Console
-; CursorPosition = 50
-; FirstLine = 28
+; CursorPosition = 53
+; FirstLine = 19
 ; Folding = -
 ; EnableXP
 ; DPIAware

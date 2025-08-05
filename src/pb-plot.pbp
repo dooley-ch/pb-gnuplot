@@ -7,12 +7,12 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2025-08-05 14:08" user="jdooley" host="Jamess-iMac.local"/>
+    <lastopen date="2025-08-05 14:18" user="jdooley" host="Jamess-iMac.local"/>
   </section>
   <section name="files">
     <file name="win-main.pb">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="1" panelstate=""/>
-      <fingerprint md5="21ae8ac5e9683218f569bd9a8e6ffa9c"/>
+      <fingerprint md5="4772967543d62b39415340098a1a39c5"/>
     </file>
     <file name="app_constants.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
@@ -25,6 +25,10 @@
     <file name="statusbar.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
       <fingerprint md5="ab818049563fd2b484c53806afb69cf2"/>
+    </file>
+    <file name="menu.pbi">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="0" sortindex="0" panelstate=""/>
+      <fingerprint md5="804a6449e20b0541b58be763a227947b"/>
     </file>
   </section>
   <section name="targets">
