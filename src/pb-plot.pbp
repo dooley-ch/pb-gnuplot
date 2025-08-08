@@ -7,7 +7,7 @@
   <section name="data">
     <explorer view="" pattern="0"/>
     <log show="1"/>
-    <lastopen date="2025-08-05 22:47" user="jdooley" host="Jamess-iMac.local"/>
+    <lastopen date="2025-08-06 09:06" user="jdooley" host="Jamess-iMac.local"/>
   </section>
   <section name="files">
     <file name="win-main.pb">
@@ -48,7 +48,7 @@
     </file>
     <file name="menu.pbi">
       <config load="0" scan="1" panel="1" warn="1" lastopen="1" sortindex="10" panelstate=""/>
-      <fingerprint md5="5c5330f268a1761d93a3ed1a2101301d"/>
+      <fingerprint md5="39a91bc15d6c855b491fe5f6cb896f10"/>
     </file>
   </section>
   <section name="targets">

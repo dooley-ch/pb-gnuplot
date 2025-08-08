@@ -71,6 +71,7 @@ Module MenuModule
           MenuItem(#hMenuFile_Quit, "&Quit")
           
         BindMenuEvent(hMenuBar, #hMenuFile_About, @OnDisplayAboutDialog())
+        BindMenuEvent(hMenuBar, #PB_Menu_About, @OnDisplayAboutDialog())
         BindMenuEvent(hMenuBar, #hMenuFile_Quit, @OnQuit())          
         BindMenuEvent(hMenuBar, #PB_Menu_Quit, @OnQuit())
       EndIf
@@ -86,7 +87,7 @@ Module MenuModule
 EndModule
 ; IDE Options = PureBasic 6.21 - C Backend (MacOS X - arm64)
 ; ExecutableFormat = Console
-; CursorPosition = 63
+; CursorPosition = 76
 ; FirstLine = 42
 ; Folding = --
 ; EnableXP
